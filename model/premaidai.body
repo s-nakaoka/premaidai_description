@@ -1,0 +1,319 @@
+format: ChoreonoidBody
+formatVersion: 1.0
+angleUnit: degree
+name: Premaid-AI
+rootLink: body
+
+links:
+  -
+    name: body
+    translation: [ 0, 0, 0.28 ]
+    jointType: free
+    elements:
+      RigidBody:
+        translation: [ 0.0236, 0, 0 ]
+        elements:
+          Resource: { uri: "../meshes/body.dae" }
+  -
+    name: r_hip_joint
+    parent: body
+    translation: [ 0, -0.0217, 0.01505 ]
+    jointId: 0
+    jointType: revolute
+    jointAxis: Z
+    jointRange: [ -90, 90 ]
+    elements:
+      Resource: { uri: "../meshes/r_hip_joint.dae" }
+  -
+    name: r_uleg_root
+    parent: r_hip_joint
+    translation: [ 0, 0, -0.05407 ]
+    jointId: 1
+    jointType: revolute
+    jointAxis: X
+    jointRange: [ -90, 90 ]
+    elements:
+      Resource: { uri: "../meshes/r_uleg_root.dae" }
+  -
+    name: r_uleg
+    parent: r_uleg_root
+    translation: [ 0, -0.01021, -0.03829 ]
+    jointId: 2
+    jointType: revolute
+    jointAxis: Y
+    jointRange: [ -90, 90 ]
+    elements:
+      Resource: { uri: "../meshes/r_uleg.dae" }
+  -
+    name: r_lleg
+    parent: r_uleg
+    translation: [ 0, 0, -0.06827 ]
+    jointId: 3
+    jointType: revolute
+    jointAxis: Y
+    jointRange: [ -90, 90 ]
+    elements:
+      Resource: { uri: "../meshes/r_lleg.dae" }
+  -
+    name: r_aky_joint
+    parent: r_lleg
+    translation: [ 0, 0, -0.06749 ]
+    jointId: 4
+    jointType: revolute
+    jointAxis: Y
+    jointRange: [ -90, 90 ]
+  -
+    name: r_foot
+    parent: r_aky_joint
+    jointId: 5
+    jointType: revolute
+    jointAxis: X
+    jointRange: [ -90, 90 ]
+    elements:
+      Resource: { uri: "../meshes/r_foot.dae" }
+  -
+    name: l_hip_joint
+    parent: body
+    translation: [ 0, 0.0217, 0.01505 ]
+    jointId: 6
+    jointType: revolute
+    jointAxis: Z
+    jointRange: [ -90, 90 ]
+    elements:
+      Resource: { uri: "../meshes/l_hip_joint.dae" }
+  -
+    name: l_uleg_root
+    parent: l_hip_joint
+    translation: [ 0, 0, -0.05407 ]
+    jointId: 7
+    jointType: revolute
+    jointAxis: X
+    jointRange: [ -90, 90 ]
+    elements:
+      Resource: { uri: "../meshes/l_uleg_root.dae" }
+  -
+    name: l_uleg
+    parent: l_uleg_root
+    translation: [ 0, 0.01021, -0.03829 ]
+    jointId: 8
+    jointType: revolute
+    jointAxis: Y
+    jointRange: [ -90, 90 ]
+    elements:
+      Resource: { uri: "../meshes/l_uleg.dae" }
+  -
+    name: l_lleg
+    parent: l_uleg
+    translation: [ 0, 0, -0.06827 ]
+    jointId: 9
+    jointType: revolute
+    jointAxis: Y
+    jointRange: [ -90, 90 ]
+    elements:
+      Resource: { uri: "../meshes/l_lleg.dae" }
+  -
+    name: l_aky_joint
+    parent: l_lleg
+    translation: [ 0, 0, -0.06749 ]
+    jointId: 10
+    jointType: revolute
+    jointAxis: Y
+    jointRange: [ -90, 90 ]
+  -
+    name: l_foot
+    parent: l_aky_joint
+    jointId: 11
+    jointType: revolute
+    jointAxis: X
+    jointRange: [ -90, 90 ]
+    elements:
+      Resource: { uri: "../meshes/l_foot.dae" }
+  -
+    name: r_uarm_joint
+    parent: body
+    translation: [ -0.01726, -0.03829, 0.097 ]
+    jointId: 12
+    jointType: revolute
+    jointAxis: Y
+    jointRange: [ -90, 90 ]
+    elements:
+      Resource: { uri: "../meshes/r_uarm_joint.dae" }
+  -
+    name: r_uarm
+    parent: r_uarm_joint
+    translation: [ 0, -0.01925, 0 ]
+    jointId: 13
+    jointType: revolute
+    jointAxis: X
+    jointRange: [ -90, 90 ]
+    elements:
+      Resource: { uri: "../meshes/r_uarm.dae" }
+  -
+    name: r_larm_joint
+    parent: r_uarm
+    translation: [ 0, -0.05587567, 0 ]
+    jointId: 14
+    jointType: revolute
+    jointAxis: Y
+    jointRange: [ -90, 90 ]
+    elements:
+      Resource: { uri: "../meshes/r_larm_joint.dae" }
+  -
+    name: r_larm
+    parent: r_larm_joint
+    translation: [ 0, -0.030488976696505, 0 ]
+    jointId: 15
+    jointType: revolute
+    jointAxis: X
+    jointRange: [ -90, 90 ]
+    elements:
+      Resource: { uri: "../meshes/r_larm.dae" }
+  -
+    name: r_hand
+    parent: r_larm
+    translation: [ 0.01002, -0.047611784255581, 0 ]
+    jointId: 16
+    jointType: revolute
+    jointAxis: Y
+    jointRange: [ -90, 90 ]
+    elements:
+      Resource: { uri: "../meshes/r_hand.dae" }
+  -
+    name: l_uarm_joint
+    parent: body
+    translation: [ -0.01726, 0.03829, 0.097 ]
+    jointId: 17
+    jointType: revolute
+    jointAxis: Y
+    jointRange: [ -90, 90 ]
+    elements:
+      Resource: { uri: "../meshes/l_uarm_joint.dae" }
+  -
+    name: l_uarm
+    parent: l_uarm_joint
+    translation: [ 0, 0.01925, 0 ]
+    jointId: 18
+    jointType: revolute
+    jointAxis: X
+    jointRange: [ -90, 90 ]
+    elements:
+      Resource: { uri: "../meshes/l_uarm.dae" }
+  -
+    name: l_larm_joint
+    parent: l_uarm
+    translation: [ 0, 0.05587567, 0 ]
+    jointId: 19
+    jointType: revolute
+    jointAxis: Y
+    jointRange: [ -90, 90 ]
+    elements:
+      Resource: { uri: "../meshes/l_larm_joint.dae" }
+  -
+    name: l_larm
+    parent: l_larm_joint
+    translation: [ 0, 0.030488976696505, 0 ]
+    jointId: 20
+    jointType: revolute
+    jointAxis: X
+    jointRange: [ -90, 90 ]
+    elements:
+      Resource: { uri: "../meshes/l_larm.dae" }
+  -
+    name: l_hand
+    parent: l_larm
+    translation: [ 0.01002, 0.047611784255581, 0 ]
+    jointId: 21
+    jointType: revolute
+    jointAxis: Y
+    jointRange: [ -90, 90 ]
+    elements:
+      Resource: { uri: "../meshes/l_hand.dae" }
+  -
+    name: neck
+    parent: body
+    translation: [ -0.0083, 0, 0.1088 ]
+    jointId: 22
+    jointType: revolute
+    jointAxis: Y
+    jointRange: [ -90, 90 ]
+    elements:
+      Resource: { uri: "../meshes/neck.dae" }
+  -
+    name: head_nz_joint
+    parent: neck
+    jointId: 23
+    jointType: revolute
+    jointAxis: Z
+    jointRange: [ -90, 90 ]
+  -
+    name: head
+    parent: head_nz_joint
+    translation: [ 0, 0, 0.0362 ]
+    jointId: 24
+    jointType: revolute
+    jointAxis: -X
+    jointRange: [ -90, 90 ]
+    elements:
+      Resource: { uri: "../meshes/head.dae" }
+
+standardPose: [ 
+  0,   0, -20,  40, -20, 0,
+  0,   0, -20,  40, -20, 0,
+  0,  70,   0,  20,   0,
+  0, -70,   0, -20,   0,
+  0,   0,   0 ]
+
+linkGroup: 
+  - name: UPPER-BODY
+    links: 
+      - name: HEAD
+        links: [ neck, head_nz_joint, head ]
+      - name: ARMS
+        links:
+          - name: R-ARM
+            links: [ r_uarm_joint, r_uarm, r_larm_joint, r_larm, r_hand ]
+          - name: L-ARM
+            links: [ l_uarm_joint, l_uarm, l_larm_joint, l_larm, l_hand ]
+  - body
+  - name: LOWER-BODY
+    links:
+      - name: LEGS
+        links:
+        - name: R-LEG
+          links: [ r_hip_joint, r_uleg_root, r_uleg, r_lleg, r_aky_joint, r_foot ]
+        - name: L-LEG
+          links: [ l_hip_joint, l_uleg_root, l_uleg, l_lleg, l_aky_joint, l_foot ]
+
+possibleIkInterpolationLinks: [ body, r_foot, l_foot ]
+defaultIkInterpolationLinks: [ body, r_foot, l_foot ]
+possileSupportLinks: [ r_foot, l_foot ]
+
+defaultIKsetup:
+  body: [ r_foot, l_foot ]
+  r_foot: [ body ]
+  l_foot: [ body ]
+
+footLinks:
+  - link: r_foot
+    soleCenter: [ 0, 0, 0 ]
+  - link: l_foot
+    soleCenter: [ 0, 0, 0 ]
+
+symmetricJoints:
+  - [ head_nz_joint ]
+  - [ r_hip_joint,  l_hip_joint,  -1 ]
+  - [ r_uleg_root,  l_uleg_root,  -1 ]
+  - [ r_foot,       l_foot,       -1 ]
+  - [ r_uarm,       l_uarm,       -1 ]
+  - [ r_larm_joint, l_larm_joint, -1 ]
+  - [ r_larm,       l_larm,       -1 ]
+  - [ r_hand,       l_hand,       -1 ]
+
+symmetricIkLinks:
+  - [ body ]
+  - [ l_foot, r_foot ]
+
+collisionDetection:
+  excludeTreeDepth: 3
+  excludeLinks: [ ]
+      
