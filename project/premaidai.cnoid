@@ -20,7 +20,7 @@ items:
           plugin: Body
           class: BodyItem
           data: 
-            modelFile: "../model/premaidai.body"
+            modelFile: "/home/yuki/ros/src/intelli-maid/premaidai_description/model/premaidai.body"
             currentBaseLink: "body"
             rootPosition: [ 0.0236, 0, 0.275 ]
             rootAttitude: [ 
@@ -37,12 +37,12 @@ items:
               0, 1, 0, 
               0, 0, 1 ]
             initialJointPositions: [ 
-               0.000000,  0.000000,  0.000000,  0.000000,  0.000000,  0.000000,  0.000000,  0.000000,  0.000000,  0.000000, 
-               0.000000,  0.000000,  0.000000,  0.000000,  0.000000,  0.000000,  0.000000,  0.000000,  0.000000,  0.000000, 
-               0.000000,  0.000000,  0.000000,  0.000000,  0.000000 ]
+              0.000000,  0.000000, -0.349066,  0.698132, -0.349066,  0.000000,  0.000000,  0.000000, -0.349066,  0.698132, 
+              -0.349066,  0.000000,  0.000000,  1.221730,  0.000000,  0.349066,  0.000000,  0.000000, -1.221730,  0.000000, 
+              -0.349066,  0.000000,  0.000000,  0.000000,  0.000000 ]
             zmp: [ 0, 0, 0 ]
             collisionDetection: true
-            selfCollisionDetection: false
+            selfCollisionDetection: true
             isEditable: true
         - 
           id: 3
@@ -67,6 +67,36 @@ items:
             collisionDetection: true
             selfCollisionDetection: false
             isEditable: false
+        - 
+          id: 4
+          name: "AISTSimulator"
+          plugin: Body
+          class: AISTSimulatorItem
+          data: 
+            timeStep: 0.001
+            realtimeSync: true
+            recording: "full"
+            timeRangeMode: "Unlimited"
+            timeLength: 180
+            allLinkPositionOutputMode: true
+            deviceStateOutput: true
+            controllerThreads: true
+            recordCollisionData: false
+            controllerOptions: ""
+            dynamicsMode: "Forward dynamics"
+            integrationMode: "Runge Kutta"
+            gravity: [ 0, 0, -9.80665 ]
+            staticFriction: 1
+            dynamicFriction: 1
+            cullingThresh: 0.005
+            contactCullingDepth: 0.05
+            errorCriterion: 0.001
+            maxNumIterations: 1000
+            contactCorrectionDepth: 0.0001
+            contactCorrectionVelocityRatio: 1
+            kinematicWalking: false
+            2Dmode: false
+            oldAccelSensorMode: false
 views: 
   - 
     id: 0
@@ -122,8 +152,6 @@ views:
       lightweightViewChange: false
       coordinateAxes: true
       fpsTestIteration: 1
-      showFPS: false
-      enableNewDisplayListDoubleRendering: false
       upsideDown: false
       cameras: 
         - 
@@ -155,17 +183,16 @@ views:
   - 
     id: 5
     plugin: Body
-    class: JointSliderView
+    class: JointDisplacementView
     mounted: true
     state: 
-      showAllJoints: true
-      jointId: true
-      name: true
-      numColumns: 1
-      spinBox: true
-      slider: true
-      dial: true
-      labelOnLeft: true
+      showSelectedJoints: false
+      showJointIDs: false
+      showJointNames: true
+      overlapJointNames: false
+      showSliders: true
+      showDials: false
+      showPhases: false
       currentBodyItem: 2
   - 
     id: 6
@@ -179,6 +206,96 @@ views:
         - 
           id: 2
           selectedLinks: [ 0 ]
+  - 
+    id: 7
+    plugin: Python
+    class: PythonConsoleView
+toolbars: 
+  "TimeBar": 
+    minTime: 0
+    maxTime: 30
+    frameRate: 1000
+    playbackFrameRate: 60
+    idleLoopDrivenMode: false
+    currentTime: 0
+    speedScale: 1
+    syncToOngoingUpdates: true
+    autoExpansion: true
+  "KinematicsBar": 
+    mode: AUTO
+    enablePositionDragger: true
+    penetrationBlock: false
+    collisionLinkHighlight: false
+    snapDistance: 0.025
+    penetrationBlockDepth: 0.0005
+    lazyCollisionDetectionMode: true
+  "BodyBar": 
+    current: 2
+  "LeggedBodyBar": 
+    stanceWidth: 0.15
+  "BodyMotionGenerationBar": 
+    autoGenerationForNewBody: true
+    balancer: false
+    autoGeneration: false
+    timeScaleRatio: 1
+    preInitialDuration: 1
+    postFinalDuration: 1
+    onlyTimeBarRange: false
+    makeNewBodyItem: true
+    stealthyStepMode: true
+    stealthyHeightRatioThresh: 2
+    flatLiftingHeight: 0.005
+    flatLandingHeight: 0.005
+    impactReductionHeight: 0.005
+    impactReductionTime: 0.04
+    autoZmp: true
+    minZmpTransitionTime: 0.1
+    zmpCenteringTimeThresh: 0.03
+    zmpTimeMarginBeforeLiftingSpin: 0
+    zmpMaxDistanceFromCenter: 0.02
+    allLinkPositions: false
+    lipSyncMix: false
+    timeToStartBalancer: 0
+    balancerIterations: 2
+    plainBalancerMode: false
+    boundaryConditionType: position
+    boundarySmootherType: quintic
+    boundarySmootherTime: 0.5
+    boundaryCmAdjustment: false
+    boundaryCmAdjustmentTime: 1
+    waistHeightRelaxation: false
+    gravity: 9.8
+    dynamicsTimeRatio: 1
+Body: 
+  "BodyMotionEngine": 
+    updateJointVelocities: false
+  "EditableSceneBody": 
+    editableSceneBodies: 
+      - 
+        bodyItem: 2
+        showCenterOfMass: false
+        showPpcom: false
+        showZmp: false
+      - 
+        bodyItem: 3
+        showCenterOfMass: false
+        showPpcom: false
+        showZmp: false
+    staticModelEditing: true
+  "KinematicFaultChecker": 
+    checkJointPositions: true
+    angleMargin: 0
+    translationMargin: 0
+    checkJointVelocities: true
+    velocityLimitRatio: 100
+    targetJoints: all
+    checkSelfCollisions: true
+    onlyTimeBarRange: false
+  "SplineFilterDialog": 
+    isInputFrameRateSpecified: false
+    inputFrameRate: 200
+    isOutputFrameRateSpecified: false
+    outputFrameRate: 200
 viewAreas: 
   - 
     type: embedded
@@ -186,12 +303,12 @@ viewAreas:
     contents: 
       type: splitter
       orientation: horizontal
-      sizes: [ 364, 1550 ]
+      sizes: [ 355, 1510 ]
       children: 
         - 
           type: splitter
           orientation: vertical
-          sizes: [ 335, 548 ]
+          sizes: [ 371, 607 ]
           children: 
             - 
               type: pane
@@ -204,12 +321,12 @@ viewAreas:
         - 
           type: splitter
           orientation: vertical
-          sizes: [ 630, 253 ]
+          sizes: [ 698, 280 ]
           children: 
             - 
               type: splitter
               orientation: horizontal
-              sizes: [ 723, 821 ]
+              sizes: [ 704, 800 ]
               children: 
                 - 
                   type: pane
