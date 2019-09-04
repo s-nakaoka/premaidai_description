@@ -476,5 +476,5 @@ symmetricIkLinks:
   - [ l_foot, r_foot ]
 
 collisionDetection:
-  excludeTreeDepth: 3
+  excludeTreeDepth: 1
   excludeLinks: [ ]
