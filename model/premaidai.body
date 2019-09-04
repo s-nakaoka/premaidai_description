@@ -9,10 +9,14 @@ links:
     name: body
     translation: [ 0, 0, 0.28 ]
     jointType: free
+    centerOfMass: [ 0.008509, 0.000002, 0.070698 ]
+    mass: 0.4426
+    inertia: [
+      2.871143311e-2, -0.1151e-7,     2.37094467e-3,
+                      2.672078857e-2, -0.3379e-7,
+                                      1.188332153e-2 ]
     elements:
-      RigidBody:
-        elements:
-          Resource: { uri: "../meshes/body.dae" }
+      Resource: { uri: "../meshes/body.dae" }
   -
     name: r_hip_joint
     parent: body
@@ -21,6 +25,12 @@ links:
     jointType: revolute
     jointAxis: Z
     jointRange: [ -102.43, 81 ]
+    centerOfMass: [ 0, -0.000183, -0.010532 ]
+    mass: 0.0143
+    inertia: [
+      2.0138887e-4, 0,            0,
+                    5.3757824e-4, 5.18773e-6,
+                                  4.6127151e-4 ]
     elements:
       Resource: { uri: "../meshes/r_hip_joint.dae" }
   -
@@ -31,6 +41,12 @@ links:
     jointType: revolute
     jointAxis: X
     jointRange: [ -25.35, 22.713 ]
+    centerOfMass: [ 0, -0.013420, -0.004373 ]
+    mass: 0.0648
+    inertia: [
+      2.46003845e-3, 0,             0,
+                     1.91922195e-3, 6.165664e-5,
+                                    2.38454895e-3 ]
     elements:
       Resource: { uri: "../meshes/r_uleg_root.dae" }
   -
@@ -41,6 +57,12 @@ links:
     jointType: revolute
     jointAxis: Y
     jointRange: [ -91.60, 90.213 ]
+    centerOfMass: [ 0, 0.000001, -0.032601 ]
+    mass: 0.1134
+    inertia: [
+      8.84390869e-3, 0,             0,
+                     8.25489990e-3, -0.000031e-5,
+                                    2.22801773e-3 ]
     elements:
       Resource: { uri: "../meshes/r_uleg.dae" }
   -
@@ -51,6 +73,12 @@ links:
     jointType: revolute
     jointAxis: Y
     jointRange: [ -2.0925, 119.64 ]
+    centerOfMass: [ -0.001624, -0.002494, -0.034776 ]
+    mass: 0.4426
+    inertia: [
+      7.35568420e-3, 1.871153e-5,   -3.5647034e-4,
+                     4.34662354e-3, -2.47592e-6,
+                                    4.80555054e-3 ]
     elements:
       Resource: { uri: "../meshes/r_lleg.dae" }
   -
@@ -61,6 +89,12 @@ links:
     jointType: revolute
     jointAxis: Y
     jointRange: [ -61.3575, 24.3 ]
+    centerOfMass: [ -0.009629, 0.000379, -0.003702 ]
+    mass: 0.0571
+    inertia: [
+      1.75244446e-5, 0,             1.1289989e-4,
+                     2.57425598e-3, 0,
+                                    2.24547821e-3 ]
     elements:
       Resource: { uri: "../meshes/r_ankle.dae" }
   -
@@ -71,6 +105,12 @@ links:
     jointType: revolute
     jointAxis: X
     jointRange: [ -38.23875, 37.29375 ]
+    centerOfMass: [ 0.005014, -0.008793, -0.004123 ]
+    mass: 0.0941
+    inertia: [
+      3.83406982e-3, -1.1222215e-4,  1.2157411e-4,
+                     1.013430359e-2, 1.649494e-5,
+                                     1.206411377e-2 ]
     elements:
       Resource: { uri: "../meshes/r_foot.dae" }
   -
@@ -81,6 +121,12 @@ links:
     jointType: revolute
     jointAxis: Z
     jointRange: [ -81.0, 102.43 ]
+    centerOfMass: [ 0, 0.000183, -0.010532 ]
+    mass: 0.0143
+    inertia: [
+      2.0138887e-4, 0,            0,
+                    5.3757824e-4, -5.18773e-6,
+                                  4.6127151e-4 ]
     elements:
       Resource: { uri: "../meshes/l_hip_joint.dae" }
   -
@@ -91,6 +137,12 @@ links:
     jointType: revolute
     jointAxis: X
     jointRange: [ -22.713, 25.35 ]
+    centerOfMass: [ 0, 0.013420, -0.004373 ]
+    mass: 0.0648
+    inertia: [
+      2.46003845e-3, 0,             0,
+                     1.91922195e-3, -6.165664e-5,
+                                    2.38454895e-3 ]
     elements:
       Resource: { uri: "../meshes/l_uleg_root.dae" }
   -
@@ -101,6 +153,12 @@ links:
     jointType: revolute
     jointAxis: Y
     jointRange: [ -91.60, 90.213 ]
+    centerOfMass: [ 0, 0.000001, -0.032601 ]
+    mass: 0.1134
+    inertia: [
+      8.84390869e-3, 0,             0,
+                     8.25489990e-3, -0.000031e-5,
+                                    2.22801773e-3 ]
     elements:
       Resource: { uri: "../meshes/l_uleg.dae" }
   -
@@ -111,6 +169,12 @@ links:
     jointType: revolute
     jointAxis: Y
     jointRange: [ -2.0925, 119.64 ]
+    centerOfMass: [ -0.001624, 0.002494, -0.034776 ]
+    mass: 0.4426
+    inertia: [
+      7.35568420e-3, -1.871153e-5,  -3.5647034e-4,
+                     4.34662354e-3, 2.47592e-6,
+                                    4.80555054e-3 ]
     elements:
       Resource: { uri: "../meshes/l_lleg.dae" }
   -
@@ -121,6 +185,12 @@ links:
     jointType: revolute
     jointAxis: Y
     jointRange: [ -61.3575, 24.3 ]
+    centerOfMass: [ -0.009629, 0.000379, -0.003702 ]
+    mass: 0.0571
+    inertia: [
+      1.75244446e-5, 0,             1.1289989e-4,
+                     2.57425598e-3, 0,
+                                    2.24547821e-3 ]
     elements:
       Resource: { uri: "../meshes/l_ankle.dae" }
   -
@@ -131,6 +201,12 @@ links:
     jointType: revolute
     jointAxis: X
     jointRange: [ -37.29375, 38.23875 ]
+    centerOfMass: [ 0.005014, 0.008793, -0.004123 ]
+    mass: 0.0941
+    inertia: [
+      3.83406982e-3, 1.1222215e-4,   1.2157411e-4,
+                     1.013430359e-2, -1.649494e-5,
+                                     1.206411377e-2 ]
     elements:
       Resource: { uri: "../meshes/l_foot.dae" }
   -
@@ -141,6 +217,12 @@ links:
     jointType: revolute
     jointAxis: Y
     jointRange: [ -108.0, 128.25 ]
+    centerOfMass: [ 0, -0.005109, 0.000865 ]
+    mass: 0.0131
+    inertia: [
+      3.9090332e-4, 0,             0,
+                    1.16438423e-3, 4.044059e-5,
+                                   1.32243393e-3 ]
     elements:
       Resource: { uri: "../meshes/r_uarm_joint.dae" }
   -
@@ -151,6 +233,12 @@ links:
     jointType: revolute
     jointAxis: X
     jointRange: [ -3.0375, 91.56375 ]
+    centerOfMass: [ -0.000001, -0.021640, 0.000670 ]
+    mass: 0.0712
+    inertia: [
+      3.56620514e-3, 0,             0,
+                     1.26890160e-3, -4.816492e-5,
+                                    4.14000244e-3 ]
     elements:
       Resource: { uri: "../meshes/r_uarm.dae" }
   -
@@ -161,6 +249,12 @@ links:
     jointType: revolute
     jointAxis: Y
     jointRange: [ -128.68875, 134.325 ]
+    centerOfMass: [ -0.008596, -0.015762, 0.002150 ]
+    mass: 0.0124
+    inertia: [
+      7.0485497e-4, -1.04342163e-3, 0,
+                    1.88648819e-3,  3.846500e-5,
+                                    2.36494141e-3 ]
     elements:
       Resource: { uri: "../meshes/r_larm_joint.dae" }
   -
@@ -171,6 +265,12 @@ links:
     jointType: revolute
     jointAxis: X
     jointRange: [ -13.5, 118.96875 ]
+    centerOfMass: [ -0.008596, -0.027572, 0.000420 ]
+    mass: 0.0812
+    inertia: [
+      3.42361237e-3, 0,             0,
+                     1.41587677e-3, -3.82193e-6,
+                                    4.14116486e-3 ]
     elements:
       Resource: { uri: "../meshes/r_larm.dae" }
   -
@@ -181,6 +281,12 @@ links:
     jointType: revolute
     jointAxis: Y
     jointRange: [ -135.0, 118.125 ]
+    centerOfMass: [ 0.001817, -0.018911, 0.002717 ]
+    mass: 0.0046
+    inertia: [
+      8.193970e-5, 1.78483e-6,  1.94812e-6,
+                   3.111708e-5, 2.003531e-5,
+                                9.081884e-5 ]
     elements:
       Resource: { uri: "../meshes/r_hand.dae" }
   -
@@ -191,6 +297,12 @@ links:
     jointType: revolute
     jointAxis: Y
     jointRange: [ -108.0, 128.25 ]
+    centerOfMass: [ 0, 0.005109, 0.000865 ]
+    mass: 0.0131
+    inertia: [
+      3.9090332e-4, 0,             0,
+                    1.16438423e-3, -4.044059e-5,
+                                   1.32243393e-3 ]
     elements:
       Resource: { uri: "../meshes/l_uarm_joint.dae" }
   -
@@ -201,6 +313,12 @@ links:
     jointType: revolute
     jointAxis: X
     jointRange: [ -91.56375, 3.0375 ]
+    centerOfMass: [ -0.000001, 0.021640, 0.000670 ]
+    mass: 0.0712
+    inertia: [
+      3.56620514e-3, 0,             0,
+                     1.26890160e-3, 4.816492e-5,
+                                    4.14000244e-3 ]
     elements:
       Resource: { uri: "../meshes/l_uarm.dae" }
   -
@@ -211,6 +329,12 @@ links:
     jointType: revolute
     jointAxis: Y
     jointRange: [ -128.68875, 134.325 ]
+    centerOfMass: [ -0.008596, 0.015762, 0.002150 ]
+    mass: 0.0124
+    inertia: [
+      7.0485497e-4, 1.04342163e-3, 0,
+                    1.88648819e-3, -3.846500e-5,
+                                   2.36494141e-3 ]
     elements:
       Resource: { uri: "../meshes/l_larm_joint.dae" }
   -
@@ -221,6 +345,12 @@ links:
     jointType: revolute
     jointAxis: X
     jointRange: [ -118.96875, 13.5 ]
+    centerOfMass: [ -0.008596, 0.027572, 0.000420 ]
+    mass: 0.0812
+    inertia: [
+      3.42361237e-3, 0,             0,
+                     1.41587677e-3, 3.82193e-6,
+                                    4.14116486e-3 ]
     elements:
       Resource: { uri: "../meshes/l_larm.dae" }
   -
@@ -231,6 +361,12 @@ links:
     jointType: revolute
     jointAxis: Y
     jointRange: [ -135.0, 118.125 ]
+    centerOfMass: [ 0.001817, 0.018911, 0.002717 ]
+    mass: 0.0046
+    inertia: [
+      8.193970e-5, -1.78483e-6, 1.94812e-6,
+                   3.111708e-5, -2.003531e-5,
+                                9.081884e-5 ]
     elements:
       Resource: { uri: "../meshes/l_hand.dae" }
   -
@@ -241,6 +377,12 @@ links:
     jointType: revolute
     jointAxis: Y
     jointRange: [ -10.125, 23.625 ]
+    centerOfMass: [ -0.006449, 0.000002, 0.008964 ]
+    mass: 0.01
+    inertia: [
+      6.489763e-5, 0,           -2.4047e-7,
+                   2.296302e-5, 0,
+                                6.197822e-5 ]
     elements:
       Resource: { uri: "../meshes/neck_pitch.dae" }
   -
@@ -251,6 +393,12 @@ links:
     jointType: revolute
     jointAxis: Z
     jointRange: [ -47.25, 47.25 ]
+    centerOfMass: [ 0.008100, 0.000002, 0.017871 ]
+    mass: 0.01
+    inertia: [
+      1.2636111e-4, 0,            0,
+                    2.3689224e-4, 0,
+                                  1.7372910e-4 ]
     elements:
       Resource: { uri: "../meshes/neck_yaw.dae" }
   -
@@ -261,6 +409,12 @@ links:
     jointType: revolute
     jointAxis: -X
     jointRange: [ -21.9375, 21.9375 ]
+    centerOfMass: [ 0.014213, 0.000001, 0.011813 ]
+    mass: 0.1449
+    inertia: [
+      6.50041687e-3, 0,             4.9702934e-4,
+                     5.98413635e-3, 0,
+                                    5.88398682e-3 ]
     elements:
       Resource: { uri: "../meshes/head.dae" }
 
