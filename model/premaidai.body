@@ -61,6 +61,8 @@ links:
     jointType: revolute
     jointAxis: Y
     jointRange: [ -61.3575, 24.3 ]
+    elements:
+      Resource: { uri: "../meshes/r_ankle.dae" }
   -
     name: r_foot
     parent: r_aky_joint
@@ -119,6 +121,8 @@ links:
     jointType: revolute
     jointAxis: Y
     jointRange: [ -61.3575, 24.3 ]
+    elements:
+      Resource: { uri: "../meshes/l_ankle.dae" }
   -
     name: l_foot
     parent: l_aky_joint
