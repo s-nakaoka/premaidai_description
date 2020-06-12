@@ -1,7 +1,15 @@
 <?xml version="1.0"?>
 <robot name="leg" xmlns:xacro="http://ros.org/wiki/xacro">
 
-  <xacro:macro name="premaidai_leg" params="prefix parent sign *origin">
+  <xacro:macro name="premaidai_leg" params="prefix parent side *origin">
+
+    <xacro:if value="${side=='right'}">
+      <xacro:property name="sign" value="-1"/>
+    </xacro:if>
+
+    <xacro:if value="${side=='left'}">
+      <xacro:property name="sign" value="1"/>
+    </xacro:if>
 
     <link name="${prefix}_hip_joint">
       <visual>
@@ -16,6 +24,11 @@
           <mesh filename="package://premaidai_description/meshes/${prefix}_hip_joint.dae"/>
         </geometry>
       </collision>
+      <inertial>
+        <mass value="0.0143"/>
+        <origin xyz="0.000000 ${sign*0.000183} -0.010532"/>
+        <inertia ixx="20.138887e-5" ixy="-0.000001e-5" ixz="0.0e-5" iyy="53.757824e-5" iyz="${sign*-0.518773e-5}" izz="46.127151e-5"/>
+      </inertial>
     </link>
 
     <link name="${prefix}_uleg_root">
@@ -31,6 +44,11 @@
           <mesh filename="package://premaidai_description/meshes/${prefix}_uleg_root.dae"/>
         </geometry>
       </collision>
+      <inertial>
+        <mass value="0.0648"/>
+        <origin xyz="-0.000000 ${sign*0.013420} -0.004373"/>
+        <inertia ixx="246.003845e-5" ixy="${sign*-0.001517e-5}" ixz="-0.001688e-5" iyy="191.922195e-5" iyz="${sign*-6.165664e-5}" izz="238.454895e-5"/>
+      </inertial>
     </link>
 
     <link name="${prefix}_uleg">
@@ -46,6 +64,11 @@
           <mesh filename="package://premaidai_description/meshes/${prefix}_uleg.dae"/>
         </geometry>
       </collision>
+      <inertial>
+        <mass value="0.1134"/>
+        <origin xyz="-0.000000 0.000001 -0.032601"/>
+        <inertia ixx="884.390869e-5" ixy="0.000002e-5" ixz="-0.000046e-5" iyy="825.489990e-5" iyz="-0.000031e-5" izz="222.801773e-5"/>
+      </inertial>
     </link>
 
     <link name="${prefix}_lleg">
@@ -61,15 +84,31 @@
           <mesh filename="package://premaidai_description/meshes/${prefix}_lleg.dae"/>
         </geometry>
       </collision>
+      <inertial>
+        <mass value="0.0719"/>
+        <origin xyz="-0.001624 ${sign*0.002494} -0.034776"/>
+        <inertia ixx="735.568420e-5" ixy="${sign*-1.871153e-5}" ixz="-35.647034e-5" iyy="434.662354e-5" iyz="${sign*0.247592e-5}" izz="480.555054e-5"/>
+      </inertial>
     </link>
 
-    <link name="${prefix}_dummy">
+    <link name="${prefix}_ankle">
       <visual>
         <origin rpy="0 0 0" xyz="0 0 0"/>
         <geometry>
-          <box size="0.01 0.01 0.01" />
+          <mesh filename="package://premaidai_description/meshes/${prefix}_ankle.dae"/>
         </geometry>
       </visual>
+      <collision>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://premaidai_description/meshes/${prefix}_ankle.dae"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <mass value="0.0571"/>
+        <origin xyz="-0.009629 0.000379 -0.003702"/>
+        <inertia ixx="175.244446e-5" ixy="-0.000004e-5" ixz="11.289989e-5" iyy="257.425598e-5" iyz="-0.000002e-5" izz="224.547821e-5"/>
+      </inertial>
     </link>
 
     <link name="${prefix}_foot">
@@ -85,52 +124,68 @@
           <mesh filename="package://premaidai_description/meshes/${prefix}_foot.dae"/>
         </geometry>
       </collision>
+      <inertial>
+        <mass value="0.0941"/>
+        <origin xyz="0.005014 ${sign*0.008793} -0.004123"/>
+        <inertia ixx="383.406982e-5" ixy="${sign*11.222215e-5}" ixz="12.157411e-5" iyy="1013.430359e-5" iyz="${sign*-1.649494e-5}" izz="1206.411377e-5"/>
+      </inertial>
     </link>
 
     <joint name="${prefix}_hpz_joint" type="revolute">
       <xacro:insert_block name="origin" />
       <axis xyz="0 0 1"/>
-      <limit lower="${-pi/2.0}" upper="${pi/2.0}" effort="0" velocity="0"/>
+      <limit lower="${-81.0/180.0 * pi}" upper="${102.43/180.0 * pi}" effort="10" velocity="1.0"/>
       <parent link="${parent}"/>
       <child link="${prefix}_hip_joint"/>
     </joint>
 
     <joint name="${prefix}_hpx_joint" type="revolute">
-      <origin xyz="0 0 -0.05407" rpy="0 0 0"/>
+      <origin xyz="0 ${sign*-0.0021} -0.028" rpy="0 0 0"/>
       <axis xyz="1 0 0"/>
-      <limit lower="${-pi/2.0}" upper="${pi/2.0}" effort="0" velocity="0"/>
+      <xacro:if value="${side=='right'}">
+        <limit lower="${-25.35/180.0 * pi}" upper="${22.713/180.0 * pi}" effort="10" velocity="1.0"/>
+      </xacro:if>
+      <xacro:if value="${side=='left'}">
+        <limit lower="${-22.713/180.0 * pi}" upper="${25.35/180.0 * pi}" effort="10" velocity="1.0"/>
+      </xacro:if>
       <parent link="${prefix}_hip_joint"/>
       <child link="${prefix}_uleg_root"/>
     </joint>
 
     <joint name="${prefix}_hpy_joint" type="revolute">
-      <origin xyz="0 ${sign*0.01021} -0.03829" rpy="0 0 0"/>
+      <origin xyz="0 ${sign*0.0128525} -0.034358" rpy="0 0 0"/>
       <axis xyz="0 1 0"/>
-      <limit lower="${-pi/2.0}" upper="${pi/2.0}" effort="0" velocity="0"/>
+      <limit lower="${-91.60/180.0 * pi}" upper="${90.213/180.0 * pi}" effort="10" velocity="1.0"/>
       <parent link="${prefix}_uleg_root"/>
       <child link="${prefix}_uleg"/>
     </joint>
 
     <joint name="${prefix}_kny_joint" type="revolute">
-      <origin xyz="0 0 -0.06827" rpy="0 0 0"/>
+      <origin xyz="0 0 -0.0652" rpy="0 0 0"/>
       <axis xyz="0 1 0"/>
-      <limit lower="${-pi/2.0}" upper="${pi/2.0}" effort="0" velocity="0"/>
+      <limit lower="${-2.0925/180.0 * pi}" upper="${119.64/180.0 * pi}" effort="10" velocity="1.0"/>
       <parent link="${prefix}_uleg"/>
       <child link="${prefix}_lleg"/>
     </joint>
 
     <joint name="${prefix}_aky_joint" type="revolute">
+      <origin xyz="0 0 -0.065" rpy="0 0 0"/>
       <axis xyz="0 1 0"/>
-      <limit lower="${-pi/2.0}" upper="${pi/2.0}" effort="0" velocity="0"/>
+      <limit lower="${-61.3575/180.0 * pi}" upper="${24.3/180.0 * pi}" effort="10" velocity="1.0"/>
       <parent link="${prefix}_lleg"/>
-      <child link="${prefix}_dummy"/>
+      <child link="${prefix}_ankle"/>
     </joint>
 
     <joint name="${prefix}_akx_joint" type="revolute">
-      <origin xyz="0 0 -0.06749" rpy="0 0 0"/>
+      <origin xyz="0 0 -0.040677" rpy="0 0 0"/>
       <axis xyz="1 0 0"/>
-      <limit lower="${-pi/2.0}" upper="${pi/2.0}" effort="0" velocity="0"/>
-      <parent link="${prefix}_dummy"/>
+      <xacro:if value="${side=='right'}">
+        <limit lower="${-38.23875/180.0 * pi}" upper="${37.29375/180.0 * pi}" effort="10" velocity="1.0"/>
+      </xacro:if>
+      <xacro:if value="${side=='left'}">
+        <limit lower="${-37.29375/180.0 * pi}" upper="${38.23875/180.0 * pi}" effort="10" velocity="1.0"/>
+      </xacro:if>
+      <parent link="${prefix}_ankle"/>
       <child link="${prefix}_foot"/>
     </joint>
 
